@@ -5,11 +5,10 @@ const adminMiddleware = require("../middlewares/adminMiddleware");
 
 const router = express.Router();
 
-router.get("/products", ProductController.findAll);
-router.get("/products/:id", ProductController.findById);
-
-router.post("/products", [authMiddleware, adminMiddleware], ProductController.create);
-router.put("/products/:id", [authMiddleware, adminMiddleware], ProductController.update);
-router.delete("/products/:id", [authMiddleware, adminMiddleware], ProductController.delete);
+router.get("/", ProductController.findAll);
+router.get("/:id", ProductController.findById);
+router.post("/", [authMiddleware, adminMiddleware], ProductController.create);
+router.put("/:id", [authMiddleware, adminMiddleware], ProductController.update);
+router.delete("/:id", [authMiddleware, adminMiddleware], ProductController.delete);
 
 module.exports = router;

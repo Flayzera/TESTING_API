@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(cors()); 
 app.use("/users", userRoutes);
-app.use(productRoutes);
+app.use("/products", productRoutes);
 
 // Rota de teste para verificar se a API está funcionando
 app.get('/', (req, res) => {
@@ -31,11 +31,10 @@ app.use((err, req, res, next) => {
 });
 
 // Para ambiente local
-if (process.env.NODE_ENV !== 'production') {
-  app.listen(4000, () => {
-    console.log("Servidor rodando na porta 4000");
-  });
-}
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+  console.log(`🚀 Servidor rodando em http://localhost:${port}`);
+});
 
 // Para ambiente de produção (Vercel)
 module.exports = app;
