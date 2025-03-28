@@ -8,13 +8,16 @@ datasource db {
 }
 
 model Product {
-  id      Int    @id @default(autoincrement())
-  name    String
-  price   Float  
-  enabled Boolean 
-  image   String
-  userId  Int?    
-  user    User?   @relation(fields: [userId], references: [id]) 
+  id       Int      @id @default(autoincrement())
+  name     String
+  price    Float
+  category String
+  enabled  Boolean
+  image    String
+  userId   Int?    
+  user     User?    @relation(fields: [userId], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now()) @updatedAt
 }
 
 model User {
